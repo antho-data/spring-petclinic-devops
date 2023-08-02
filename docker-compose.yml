@@ -1,23 +1,6 @@
 version: '2'
 
 services:
-  config-server:
-    image: springcommunity/spring-petclinic-cloud--config-server
-    container_name: config-server
-    mem_limit: 512M
-    ports:
-     - 8888:8888
-
-  discovery-server:
-    image: springcommunity/spring-petclinic-cloud-discovery-server
-    container_name: discovery-server
-    mem_limit: 512M
-    depends_on:
-      - config-server
-    entrypoint: ["./dockerize","-wait=tcp://config-server:8888","-timeout=60s","--","java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseContainerSupport", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
-    ports:
-     - 8761:8761
-
   customers-service:
     image: springcommunity/spring-petclinic-cloud-customers-service
     container_name: customers-service
@@ -61,26 +44,6 @@ services:
     entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseContainerSupport", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
     ports:
      - 8080:8080
-
-  tracing-server:
-    image: openzipkin/zipkin
-    container_name: tracing-server
-    mem_limit: 512M
-    environment:
-    - JAVA_OPTS=-XX:+UnlockExperimentalVMOptions -Djava.security.egd=file:/dev/./urandom
-    ports:
-     - 9411:9411
-
-  admin-server:
-    image: springcommunity/spring-petclinic-cloud-admin-server
-    container_name: admin-server
-    mem_limit: 512M
-    depends_on:
-     - config-server
-     - discovery-server
-    entrypoint: ["./dockerize","-wait=tcp://discovery-server:8761","-timeout=60s","--","java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseContainerSupport", "-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
-    ports:
-     - 9090:9090
 
   ## Grafana / Prometheus
 
