@@ -5,30 +5,6 @@
 This microservices branch was initially derived from the [microservices version](https://github.com/spring-petclinic/spring-petclinic-microservices) to demonstrate how to split sample Spring application into [microservices](http://www.martinfowler.com/articles/microservices.html).
 To achieve that goal we use Spring Cloud Gateway, Spring Cloud Circuit Breaker, Spring Cloud Config, Spring Cloud Sleuth, Resilience4j, Micrometer and the Eureka Service Discovery from the [Spring Cloud Netflix](https://github.com/spring-cloud/spring-cloud-netflix) technology stack. While running on Kubernetes, some components (such as Spring Cloud Config and Eureka Service Discovery) are replaced with Kubernetes-native features such as config maps and Kubernetes DNS resolution.
 
-This fork also demostrates the use of free distributed tracing with Tanzu Observability by Wavefront, which provides cloud-based monitoring of  Spring Boot applications with 5 days of history.
-
-
-  * [Understanding the Spring Petclinic application](#understanding-the-spring-petclinic-application)
-  * [Compiling and pushing to Cloud Foundry:](#compiling-and-pushing-to-cloud-foundry)
-  * [Compiling and pushing to Kubernetes](#compiling-and-pushing-to-kubernetes)
-    + [Choose your Docker registry](#choose-your-docker-registry)
-    + [Setting things up in Kubernetes](#setting-things-up-in-kubernetes)
-    + [Settings up databases with helm](#settings-up-databases-with-helm)
-    + [Deploying the application](#deploying-the-application)
-  * [Starting services locally without Docker](#starting-services-locally-without-docker)
-  * [Starting services locally with docker-compose](#starting-services-locally-with-docker-compose)
-  * [In case you find a bug/suggested improvement for Spring Petclinic Microservices](#in-case-you-find-a-bug-suggested-improvement-for-spring-petclinic-microservices)
-  * [Database configuration](#database-configuration)
-    + [Start a MySql database](#start-a-mysql-database)
-    + [Use the Spring 'mysql' profile](#use-the-spring--mysql--profile)
-  * [Custom metrics monitoring](#custom-metrics-monitoring)
-    + [Using Prometheus](#using-prometheus)
-    + [Using Grafana with Prometheus](#using-grafana-with-prometheus)
-    + [Custom metrics](#custom-metrics)
-  * [Looking for something in particular?](#looking-for-something-in-particular-)
-  * [Interesting Spring Petclinic forks](#interesting-spring-petclinic-forks)
-- [Contributing](#contributing)
-
 
 ## Understanding the Spring Petclinic application
 
